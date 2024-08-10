@@ -7,6 +7,10 @@ OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
 if not OPENAI_API_KEY:
     raise ValueError("OPENAI_API_KEY environment variable is not set")
 
+GOOGLE_API_KEY = os.getenv('GOOGLE_API_KEY')
+if not GOOGLE_API_KEY:
+    raise ValueError("GOOGLE_API_KEY environment variable is not set")
+
 client = OpenAI(
   api_key=OPENAI_API_KEY,
 )
@@ -20,3 +24,12 @@ completion = client.chat.completions.create(
 )
 
 print(completion.choices[0].message.content)
+
+import google.generativeai as genai
+import os
+
+genai.configure(api_key=GOOGLE_API_KEY)
+
+model = genai.GenerativeModel('gemini-1.5-flash')
+response = model.generate_content("Write a story about an AI and magic")
+print(response.text)
