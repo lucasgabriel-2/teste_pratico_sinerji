@@ -1,14 +1,14 @@
-from models.factories.chatgpt_factory import ChatGPTFactory
-from models.factories.gemini_factory import GeminiFactory
+from commands.send_request_command import SendRequestCommand
 
 def main() -> None:
-    chatgpt_factory = ChatGPTFactory
-    gemini_factory = GeminiFactory
-
-    chatgpt_model = chatgpt_factory.manufacturesLLM()
-    gemini_model = gemini_factory.manufacturesLLM()
-
-    print("ChatGPT response:", chatgpt_model.get_response("write a sentence"))
-    print("Gemini response:", gemini_model.get_response("write a sentence"))
+    print("\n========================================================")
+    print("            Welcom to the LLM connector!")
+    print("========================================================\n")
+    prompt = input("Write a message: ")
+    
+    command = SendRequestCommand(prompt)
+    chatgpt_response, gemini_response = command.execute()
+    print("ChatGPT response:", chatgpt_response)
+    print("Gemini response:", gemini_response)
 
 main()
