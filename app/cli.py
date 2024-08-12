@@ -31,6 +31,7 @@ class CLI():
 
     def send_prompt(self):
         prompt = input("Write a message: ")
+        print("\n")
         
         command = SendRequestCommand(prompt)
         chatgpt_response, gemini_response = command.execute()
