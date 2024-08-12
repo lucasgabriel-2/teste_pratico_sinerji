@@ -13,7 +13,7 @@ class ResponseCoherenceStrategy(Strategy):
                 name="Coherence",
                 criteria="Coherence - the collective quality of all sentences in the actual output",
                 evaluation_params=[LLMTestCaseParams.ACTUAL_OUTPUT],
-                model="gpt-3.5-turbo"
+                model="gpt-4o-mini"
             )
 
             coherence_metric.measure(test_case)
